@@ -9,6 +9,7 @@ html, body
 	line-height: 100%;
 	font-family: Segoe;
 	font-size: 16px;
+	border: 2px solid black;
 }
 .unselected{
 	background: #00a00a;

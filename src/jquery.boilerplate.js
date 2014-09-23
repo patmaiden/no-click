@@ -1,7 +1,13 @@
 
 $(document).ready(function(){
-\		var i = 0;
+		var i = 0;
 		blocks = []
+
+    	var currentMousePos = { x: -1, y: -1 };
+    	$(document).mousemove(function(event) {
+        	currentMousePos.x = event.pageX;
+        	currentMousePos.y = event.pageY;
+   		});
 		//click to generate new div, default to unselected
 		$("#element").click(function(e) {
 		    var a = $('<div/>');
@@ -36,13 +42,25 @@ $(document).ready(function(){
 				block.addClass('selected');
 				block.removeClass('unselected');
 			} else if ( block.hasClass('selected')) {
-				$('#indicator').html('You have clicked block ' + block.text());
-				block.addClass('unselected');
-				block.removeClass('selected');
-				    setTimeout(function(){
-        		//fade back
-       				 $('#indicator').html("");
-    			}, 1000);
+				click = false;
+
+				setTimeout(function(){
+   					var el = document.elementFromPoint(currentMousePos.x, currentMousePos.y);
+   					click = (el == block[0]);
+
+
+					if(click){
+						$('#indicator').html('You have clicked block ' + block.text());
+						block.addClass('unselected');
+						block.removeClass('selected');
+						setTimeout(function(){
+		       				 $('#indicator').html("Click to make blocks. Enter with the cursor to highlight, then reenter for 300ms to click.");
+		    			}, 2000);
+	    			}
+				}
+				,300);
+
+
 			}
 		}
 
