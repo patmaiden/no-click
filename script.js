@@ -54,7 +54,7 @@ $(document).ready(function(){
 						block.addClass('unselected');
 						block.removeClass('selected');
 						setTimeout(function(){
-		       				 $('#indicator').html("Click to make blocks. Enter with the cursor to highlight, then reenter for 300ms to click.");
+		       				 $('#indicator').html("Click to make blocks. Enter with the cursor to highlight, then re-enter for 300ms to click.");
 		    			}, 2000);
 	    			}
 				}
